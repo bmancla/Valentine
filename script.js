@@ -51,6 +51,25 @@ function displayCat() {
     // When the cat image is fully loaded, add it to the image container
     catImage.onload = function() {
         imageContainer.appendChild(catImage);
+
+        // Create and append the "CLICK HERE" button
+        var clickButton = document.createElement('button');
+        clickButton.textContent = 'CLICK HERE';
+        clickButton.style.padding = '10px 20px';
+        clickButton.style.fontSize = '20px';
+        clickButton.style.marginTop = '20px';
+        clickButton.style.backgroundColor = '#FB607F';
+        clickButton.style.color = 'white';
+        clickButton.style.border = 'none';
+        clickButton.style.cursor = 'pointer';
+
+        // Add an event listener to redirect when the button is clicked
+        clickButton.onclick = function() {
+            window.location.href = 'https://bmancla.github.io/Valentine-Letter/';
+        };
+
+        // Append the button to the container
+        imageContainer.appendChild(clickButton);
     };
 }
 
