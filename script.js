@@ -51,25 +51,6 @@ function displayCat() {
     // When the cat image is fully loaded, add it to the image container
     catImage.onload = function() {
         imageContainer.appendChild(catImage);
-
-        // Create and append the "CLICK HERE" button
-        var clickButton = document.createElement('button');
-        clickButton.textContent = 'CLICK HERE';
-        clickButton.style.padding = '10px 20px';
-        clickButton.style.fontSize = '20px';
-        clickButton.style.marginTop = '20px';
-        clickButton.style.backgroundColor = '#FB607F';
-        clickButton.style.color = 'white';
-        clickButton.style.border = 'none';
-        clickButton.style.cursor = 'pointer';
-
-        // Add an event listener to redirect when the button is clicked
-        clickButton.onclick = function() {
-            window.location.href = 'https://bmancla.github.io/Valentine-Letter/';
-        };
-
-        // Append the button to the container
-        imageContainer.appendChild(clickButton);
     };
 }
 
@@ -79,15 +60,44 @@ function displayCatHeart() {
     document.getElementById('image-container').innerHTML = '';
     // Get the container where the image will be displayed
     var imageContainer = document.getElementById('image-container');
+    // Create a wrapper div for both the cat-heart image and the button
+    var contentWrapper = document.createElement('div');
+    contentWrapper.style.textAlign = 'center'; // Ensures everything is centered
+
     // Create a new Image element for the cat-heart
     var catHeartImage = new Image();
     // Set the source (file path) for the cat-heart image
-    catHeartImage.src = 'cat-heart.gif' // Assuming the cat-heart image is named "cat-heart.gif"
+    catHeartImage.src = 'cat-heart.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
     // Set alternative text for the image (for accessibility)
     catHeartImage.alt = 'Cat Heart';
-    // When the cat-heart image is fully loaded, add it to the image container
+
+    // When the cat-heart image is fully loaded, add it to the wrapper
     catHeartImage.onload = function() {
-        imageContainer.appendChild(catHeartImage);
+        contentWrapper.appendChild(catHeartImage);
+
+        // Create and append the "CLICK HERE" button
+        var clickButton = document.createElement('button');
+        clickButton.textContent = 'CLICK HERE';
+        clickButton.style.padding = '10px 20px';
+        clickButton.style.fontSize = '20px';
+        clickButton.style.marginTop = '20px'; // Space between image and button
+        clickButton.style.backgroundColor = '#FB607F';
+        clickButton.style.color = 'white';
+        clickButton.style.border = 'none';
+        clickButton.style.cursor = 'pointer';
+        clickButton.style.display = 'block'; // Forces the button to appear below the image as a block element
+
+        // Add an event listener to redirect when the button is clicked
+        clickButton.onclick = function() {
+            window.location.href = 'https://bmancla.github.io/Valentine-Letter/';
+        };
+
+        // Append the button to the wrapper
+        contentWrapper.appendChild(clickButton);
+        
+        // Append the wrapper to the image container
+        imageContainer.appendChild(contentWrapper);
+
         // Hide the options container
         document.getElementById('options').style.display = 'none';
     };
